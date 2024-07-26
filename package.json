@@ -1,0 +1,17 @@
+{
+  "name": "flower-shop",
+  "version": "1.0.0",
+  "description": "A simple flower shop application with REST API and SPA",
+  "main": "indexREST.js",
+  "scripts": {
+    "start": "node indexREST.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

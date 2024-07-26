@@ -1,0 +1,17 @@
+{
+    "port": 4000,
+    "host": "localhost",
+    "storageEngine": {
+        "folder": "jsonStorageEngine",
+        "dataStorageFile": "dataStorageLayer.js"
+    },
+    "storage": {
+        "folder": "flowerRegister",
+        "dataStorageFile": "Abebe_Samuel_flowers.json",
+        "storageConfigFile": "storageConfig.json"
+    },
+    "library": {
+        "folder": "library",
+        "requestHandler": "libraryForRequesthandling.js"
+    }
+}

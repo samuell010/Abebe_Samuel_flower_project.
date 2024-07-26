@@ -1,0 +1,7 @@
+{
+    "storageFile": "Abebe_Samuel_flowers.json",
+    "adapterFile": "adapter.js",
+    "primary_key": "id",
+    "resource": "flowers"
+  }
+  

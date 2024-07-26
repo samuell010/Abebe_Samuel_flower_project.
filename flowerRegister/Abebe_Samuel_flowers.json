@@ -1,0 +1,51 @@
+[
+    {
+        "Id": 2,
+        "name": "lily-of-the-valley",
+        "unitPrice": 6,
+        "stock": 10,
+        "farmer": "Fungus Ltd."
+    },
+    {
+        "Id": 7,
+        "name": "toadstool",
+        "unitPrice": 8,
+        "stock": 30,
+        "farmer": "Roses of Rovaniemi oy"
+    },
+    {
+        "Id": 5,
+        "name": "tulip",
+        "unitPrice": 2,
+        "stock": 100,
+        "farmer": "Rosamunda"
+    },
+    {
+        "Id": 3,
+        "name": "rose",
+        "unitPrice": 4,
+        "stock": 150,
+        "farmer": "Viola and Hyacinth Company"
+    },
+    {
+        "Id": 1,
+        "name": "marigold",
+        "unitPrice": 10,
+        "stock": 7,
+        "farmer": "Mike Mycelium Ltd."
+    },
+    {
+        "Id": 4,
+        "name": "mushroom",
+        "unitPrice": 5,
+        "stock": 20,
+        "farmer": "Violet's Garden"
+    },
+    {
+        "Id": 6,
+        "name": "violet",
+        "unitPrice": 9,
+        "stock": 1,
+        "farmer": "Poison Ivy & Co."
+    }
+]
