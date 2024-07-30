@@ -16,11 +16,11 @@
             // Iterate over each flower and create a table row
             for (const flower of result) {
                 const tr = document.createElement('tr');
-                tr.appendChild(createCell(flower.id));
-                tr.appendChild(createCell(flower.name));
-                tr.appendChild(createCell(flower.color));
-                tr.appendChild(createCell(flower.unitprice));
-                tr.appendChild(createCell(flower.stock));
+                tr.appendChild(createCell(flower.Id)); // Fixed property name
+                tr.appendChild(createCell(flower.name)); // Fixed property name
+                tr.appendChild(createCell(flower.unitPrice)); // Fixed property name
+                tr.appendChild(createCell(flower.stock)); // Fixed property name
+                tr.appendChild(createCell(flower.farmer)); // Added farmer property
                 resultset.appendChild(tr);
             }
         } catch (err) {
@@ -30,7 +30,7 @@
 
     function createCell(data) {
         const td = document.createElement('td');
-        td.textContent = data;
+        td.textContent = data !== undefined ? data : 'N/A'; // Handle missing data
         return td;
     }
 

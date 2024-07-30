@@ -50,10 +50,12 @@
 
         try {
             const data = await fetch(`http://localhost:4000/api/flowers/${keyName}/${value}`, { mode: 'cors' });
-
-            const result = await data.json();
-
-            updatePage(result);
+            if (data.ok) {
+                const result = await data.json();
+                updatePage(result);
+            } else {
+                showErrorMessage('Failed communication!');
+            }
         } catch (err) {
             showErrorMessage(err.message);
         }
@@ -72,11 +74,11 @@
 
     function createFlower(flower) {
         return `<div class="flower">
-            <p>ID: ${flower.id}</p>
+            <p>ID: ${flower.Id}</p>
             <p>Name: ${flower.name}</p>
-            <p>Color: ${flower.color}</p>
-            <p>Price: ${flower.price}</p>
+            <p>Unit Price: ${flower.unitPrice}</p>
             <p>Stock: ${flower.stock}</p>
+            <p>Farmer: ${flower.farmer}</p>
         </div>`;
     }
 

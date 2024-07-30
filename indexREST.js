@@ -12,13 +12,13 @@ const {
     library
 } = require('./config.json');
 
-const { 
-    read, 
-    send, 
-    sendJson, 
-    sendError, 
-    isIn, 
-    getRequestPostBodyData 
+const {
+    read,
+    send,
+    sendJson,
+    sendError,
+    isIn,
+    getRequestPostBodyData
 } = require(path.join(__dirname, library.folder, library.requestHandler));
 
 const storageEnginePath = path.join(__dirname, storageEngine.folder);
@@ -42,8 +42,8 @@ const resourceRoutes = [
 
 const publicPath = path.join(__dirname, 'public');
 const pagesPath = path.join(publicPath, 'pages');
-const homePath = path.join(pagesPath, 'index.html');  // Ensure index.html exists in the pages directory
-const stylePath = path.join(pagesPath, 'styles.css');  // Ensure styles.css exists in the pages directory
+const homePath = path.join(pagesPath, 'index.html');
+const stylePath = path.join(pagesPath, 'styles.css');
 
 const server = http.createServer(async (req, res) => {
     const { pathname } = new URL(`http://${req.headers.host}${req.url}`);
@@ -60,14 +60,14 @@ const server = http.createServer(async (req, res) => {
                 } else {
                     send(res, result);
                 }
-            } else if (route === '/styles.css') {  // Serve the styles.css file
+            } else if (route === '/styles.css') {
                 const result = await read(stylePath);
                 if (result.error) {
                     sendError(res, result.error, 'ERROR', 404);
                 } else {
                     send(res, result);
                 }
-            } else if (route.startsWith('/js/')) {  // Serve JavaScript files
+            } else if (route.startsWith('/js/')) {
                 const jsFilePath = path.join(publicPath, route);
                 const result = await read(jsFilePath);
                 if (result.error) {
@@ -82,19 +82,23 @@ const server = http.createServer(async (req, res) => {
                 } else {
                     sendError(res, 'Resource not found', 'ERROR', 404);
                 }
-            } else if (route.startsWith('/api/flowers')) {
-                if (route === '/api/flowers') {
+            } else if (route === '/api/flowers/keys') {
+                const keys = Object.keys((await register.getAll())[0] || {});
+                sendJson(res, keys);
+            } else if (route.startsWith('/api/flowers/')) {
+                const parts = route.split('/');
+                const key = parts[3];
+                const value = parts[4];
+                if (key && value) {
                     const flowers = await register.getAll();
-                    sendJson(res, flowers);
+                    const filteredFlowers = flowers.filter(flower => flower[key] && flower[key].toString().toLowerCase() === value.toLowerCase());
+                    sendJson(res, filteredFlowers);
                 } else {
-                    const flowerId = route.split('/').pop();
-                    const flower = await register.get(flowerId);
-                    if (flower.length > 0) {
-                        sendJson(res, flower);
-                    } else {
-                        sendError(res, 'Flower not found', 'ERROR', 404);
-                    }
+                    sendError(res, 'Invalid key or value', 'ERROR', 400);
                 }
+            } else if (route === '/api/flowers') {
+                const flowers = await register.getAll();
+                sendJson(res, flowers);
             } else {
                 sendError(res, 'Resource not found', 'ERROR', 404);
             }

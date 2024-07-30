@@ -1,31 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Data</title>
-    <link rel="stylesheet" href="styles.css">
     <script src="/js/getAll.js"></script>
-    
-
+    <title>Flower List</title>
 </head>
 <body>
-    <h1>Flower Data</h1>
     <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Color</th>
-                <th>Price</th>
+                <th>Unit Price</th>
                 <th>Stock</th>
+                <th>Farmer</th> <!-- Added Farmer column -->
             </tr>
         </thead>
         <tbody id="resultset">
             <!-- Flower data will be populated here -->
         </tbody>
+        <button onclick="window.location.href = '/';">Home</button>
     </table>
-
-    
+   
 </body>
 </html>
